@@ -300,5 +300,11 @@ namespace WindowsFormsApplication1
         {
             Close();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutBox = new AboutBox1();
+            aboutBox.Show();
+        }
     }
 }
