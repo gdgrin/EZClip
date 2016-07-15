@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 
 namespace WindowsFormsApplication1
 {
@@ -232,6 +233,72 @@ namespace WindowsFormsApplication1
             textBox3.Clear();
             textBox4.Clear();
             textBox5.Clear();
+        }
+
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream openStream = null;
+
+            OpenFileDialog openDialog1 = new OpenFileDialog();
+            openDialog1.InitialDirectory = "C:\\";
+            openDialog1.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openDialog1.FilterIndex = 1;
+            openDialog1.RestoreDirectory = true;
+
+            if (openDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((openStream = openDialog1.OpenFile()) != null)
+                    {
+                        using (openStream)
+                        {
+                            // manipulate text file
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream saveStream = null;
+
+            SaveFileDialog saveDialog1 = new SaveFileDialog();
+            saveDialog1.InitialDirectory = "C:\\";
+            saveDialog1.Filter = "Txt files (*.txt)|*.txt";
+            saveDialog1.FilterIndex = 1;
+            saveDialog1.RestoreDirectory = true;
+
+            if (saveDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((saveStream = saveDialog1.OpenFile()) != null)
+                    {
+                        using (saveStream)
+                        {
+                            // manipulate text file
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
