@@ -8,3 +8,4 @@ C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\
 C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Debug\EZClip.exe
 C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Debug\EZClip.pdb
 C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.AboutBox1.resources
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.HelpBox1.resources

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,12 +33,18 @@ namespace WindowsFormsApplication1
         public EZClip()
         {
             InitializeComponent();
-            
+
             RegisterHotKey(this.Handle, 1, (int)KeyModifier.Control, Keys.D1.GetHashCode());
             RegisterHotKey(this.Handle, 2, (int)KeyModifier.Control, Keys.D2.GetHashCode());
             RegisterHotKey(this.Handle, 3, (int)KeyModifier.Control, Keys.D3.GetHashCode());
             RegisterHotKey(this.Handle, 4, (int)KeyModifier.Control, Keys.D4.GetHashCode());
             RegisterHotKey(this.Handle, 5, (int)KeyModifier.Control, Keys.D5.GetHashCode());
+
+            RegisterHotKey(this.Handle, 6, (int)KeyModifier.Control, Keys.NumPad1.GetHashCode());
+            RegisterHotKey(this.Handle, 7, (int)KeyModifier.Control, Keys.NumPad2.GetHashCode());
+            RegisterHotKey(this.Handle, 8, (int)KeyModifier.Control, Keys.NumPad3.GetHashCode());
+            RegisterHotKey(this.Handle, 9, (int)KeyModifier.Control, Keys.NumPad4.GetHashCode());
+            RegisterHotKey(this.Handle, 10, (int)KeyModifier.Control, Keys.NumPad5.GetHashCode());
         }
 
         protected override void WndProc(ref Message m)
@@ -50,27 +57,27 @@ namespace WindowsFormsApplication1
                 KeyModifier modifier = (KeyModifier)((int)m.LParam & 0xFFFF);       // The modifier of the hotkey that was pressed.
                 int id = m.WParam.ToInt32();                                        // The id of the hotkey that was pressed.
 
-                if (id == 1)
+                if (id == 1 || id == 6)
                 {
                     button1.PerformClick();
                 }
 
-                else if (id == 2)
+                else if (id == 2 || id == 7)
                 {
                     button2.PerformClick();
                 }
 
-                else if (id == 3)
+                else if (id == 3 || id == 8)
                 {
                     button3.PerformClick();
                 }
 
-                else if (id == 4)
+                else if (id == 4 || id == 9)
                 {
                     button4.PerformClick();
                 }
 
-                else if (id == 5)
+                else if (id == 5 || id == 10)
                 {
                     button5.PerformClick();
                 }
@@ -87,6 +94,11 @@ namespace WindowsFormsApplication1
             UnregisterHotKey(this.Handle, 3);
             UnregisterHotKey(this.Handle, 4);
             UnregisterHotKey(this.Handle, 5);
+            UnregisterHotKey(this.Handle, 6);
+            UnregisterHotKey(this.Handle, 7);
+            UnregisterHotKey(this.Handle, 8);
+            UnregisterHotKey(this.Handle, 9);
+            UnregisterHotKey(this.Handle, 10);
         }
 
 
@@ -201,7 +213,19 @@ namespace WindowsFormsApplication1
                 button1.PerformClick();
             }
 
+            else if (e.KeyCode == Keys.NumPad1 && e.Modifiers == Keys.Control)
+
+            {
+                button1.PerformClick();
+            }
+
             else if (e.KeyCode == Keys.D2 && e.Modifiers == Keys.Control)
+
+            {
+                button2.PerformClick();
+            }
+
+            else if (e.KeyCode == Keys.NumPad2 && e.Modifiers == Keys.Control)
 
             {
                 button2.PerformClick();
@@ -213,10 +237,28 @@ namespace WindowsFormsApplication1
                 button3.PerformClick();
             }
 
+            else if (e.KeyCode == Keys.NumPad3 && e.Modifiers == Keys.Control)
+
+            {
+                button3.PerformClick();
+            }
+
             else if (e.KeyCode == Keys.D4 && e.Modifiers == Keys.Control)
 
             {
                 button4.PerformClick();
+            }
+
+            else if (e.KeyCode == Keys.NumPad4 && e.Modifiers == Keys.Control)
+
+            {
+                button4.PerformClick();
+            }
+
+            else if (e.KeyCode == Keys.NumPad5 && e.Modifiers == Keys.Control)
+
+            {
+                button5.PerformClick();
             }
 
             else if (e.KeyCode == Keys.D5 && e.Modifiers == Keys.Control)
@@ -254,7 +296,42 @@ namespace WindowsFormsApplication1
                     {
                         using (openStream)
                         {
-                            // manipulate text file
+                            string onePattern = "1\\.";
+                            string twoPattern = "2\\.";
+                            string threePattern = "3\\.";
+                            string fourPattern = "4\\.";
+                            string fivePattern = "5\\.";
+
+                            StreamReader sr = new StreamReader(openStream);
+
+                            string line;
+                            while ((line = sr.ReadLine()) != null)
+                            {
+                                if (Regex.IsMatch(line, onePattern))
+                                {
+                                    textBox1.Text = line.Substring(3);
+                                }
+
+                                else if (Regex.IsMatch(line, twoPattern))
+                                {
+                                    textBox2.Text = line.Substring(3);
+                                }
+
+                                else if (Regex.IsMatch(line, threePattern))
+                                {
+                                    textBox3.Text = line.Substring(3);
+                                }
+
+                                else if (Regex.IsMatch(line, fourPattern))
+                                {
+                                    textBox4.Text = line.Substring(3);
+                                }
+
+                                else if (Regex.IsMatch(line, fivePattern))
+                                {
+                                    textBox5.Text = line.Substring(3);
+                                }
+                            }
                         }
                     }
                 }
@@ -279,19 +356,36 @@ namespace WindowsFormsApplication1
 
             if (saveDialog1.ShowDialog() == DialogResult.OK)
             {
-                try
+                if ((saveStream = saveDialog1.OpenFile()) != null)
                 {
-                    if ((saveStream = saveDialog1.OpenFile()) != null)
+                    using (saveStream)
                     {
-                        using (saveStream)
+                        StreamWriter sw = new StreamWriter(saveStream);
+                        if (textBox1.Text != string.Empty)
                         {
-                            // manipulate text file
+                            sw.WriteLine("1. " + textBox1.Text);
                         }
+                        if (textBox1.Text != string.Empty)
+                        {
+                            sw.WriteLine("2. " + textBox2.Text);
+                        }
+                        if (textBox1.Text != string.Empty)
+                        {
+                            sw.WriteLine("3. " + textBox3.Text);
+                        }
+                        if (textBox1.Text != string.Empty)
+                        {
+                            sw.WriteLine("4. " + textBox4.Text);
+                        }
+                        if (textBox1.Text != string.Empty)
+                        {
+                            sw.WriteLine("5. " + textBox5.Text);
+                        }
+
+                        sw.Dispose();
+                        sw.Close();
+
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -305,6 +399,12 @@ namespace WindowsFormsApplication1
         {
             AboutBox1 aboutBox = new AboutBox1();
             aboutBox.Show();
+        }
+
+        private void eZClipHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpBox1 helpbox = new HelpBox1();
+            helpbox.Show();
         }
     }
 }
