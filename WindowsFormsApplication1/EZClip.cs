@@ -284,7 +284,7 @@ namespace WindowsFormsApplication1
 
             OpenFileDialog openDialog1 = new OpenFileDialog();
             openDialog1.InitialDirectory = "C:\\";
-            openDialog1.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openDialog1.Filter = "EZC files (*.ezc)|*.ezc|All files (*.*)|*.*";
             openDialog1.FilterIndex = 1;
             openDialog1.RestoreDirectory = true;
 
@@ -350,7 +350,7 @@ namespace WindowsFormsApplication1
 
             SaveFileDialog saveDialog1 = new SaveFileDialog();
             saveDialog1.InitialDirectory = "C:\\";
-            saveDialog1.Filter = "Txt files (*.txt)|*.txt";
+            saveDialog1.Filter = "EZC files (*.ezc)|*.ezc";
             saveDialog1.FilterIndex = 1;
             saveDialog1.RestoreDirectory = true;
 
