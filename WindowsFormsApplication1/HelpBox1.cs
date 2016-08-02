@@ -26,5 +26,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
