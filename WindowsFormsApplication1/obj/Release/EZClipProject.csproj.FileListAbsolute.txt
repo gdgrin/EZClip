@@ -1,0 +1,11 @@
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\bin\Release\EZClip.exe.config
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\bin\Release\EZClip.exe
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\bin\Release\EZClip.pdb
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\EZClipProject.csprojResolveAssemblyReference.cache
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.AboutBox1.resources
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.EZClip.resources
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.HelpBox1.resources
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Properties.Resources.resources
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\EZClipProject.csproj.GenerateResource.Cache
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\EZClip.exe
+C:\P4\ggrinberg_main\Local\WindowsFormApplication1\WindowsFormsApplication1\obj\Release\EZClip.pdb
